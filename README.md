@@ -4,7 +4,8 @@ This is based on running ollama webui locally on raspberry pi 4 model b.
 
 # ollama Model :- Tinyllama
 how to download it :
-go to terminal and put this in : curl -fsSL https://ollama.com/install.sh | sh
+go to terminal and put this in : 
+> curl -fsSL https://ollama.com/install.sh | sh
 
 after it got downloaded, u can check it by typing 'ollama'
 
