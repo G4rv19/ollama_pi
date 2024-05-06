@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat UI Design</title>
+    <style>
+        /* Add your CSS styles here */
+        /* For example: */
+        .chat-container {
+            width: 400px;
+            height: 500px;
+            border: 1px solid #ccc;
+            overflow-y: scroll;
+        }
+        
+        .message {
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #f2f2f2;
+            border-radius: 5px;
+        }
+        
+        .user-message {
+            background-color: #e2f0ff;
+        }
+        
+        .bot-message {
+            background-color: #f0f0f0;
+        }
+        
+        .input-container {
+            margin-top: 10px;
+        }
+        
+        .input-container input {
+            width: 300px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        .input-container button {
+            padding: 5px 10px;
+            margin-left: 10px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var form = document.querySelector('form');
+            var chatContainer = document.querySelector('.chat-container');
+
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                var messageInput = document.querySelector('input[name="message"]');
+                var message = messageInput.value;
+
+                // Create a new message element
+                var messageElement = document.createElement('div');
+                messageElement.classList.add('message', 'user-message');
+                messageElement.textContent = message;
+
+                // Append the message element to the chat container
+                chatContainer.appendChild(messageElement);
+
+                // Clear the input field
+                messageInput.value = '';
+
+                // Make an AJAX request to the backend to get the output
+                // Replace the following code with your actual AJAX request
+                var output = 'This is the output from the backend';
+
+                // Create a new message element for the output
+                var outputElement = document.createElement('div');
+                outputElement.classList.add('message', 'bot-message');
+                outputElement.textContent = output;
+
+                // Append the output element to the chat container
+                chatContainer.appendChild(outputElement);
+
+                // Scroll to the bottom of the chat container
+                chatContainer.scrollTop = chatContainer.scrollHeight;
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="chat-container">
+        <!-- Chat messages will be displayed here -->
+    </div>
+    <div class="input-container">
+        <form action="/backend" method="POST">
+            <input type="text" name="message" placeholder="Type your message...">
+            <button type="submit">Send</button>
+        </form>
+    </div>
+</body>
+</html>
